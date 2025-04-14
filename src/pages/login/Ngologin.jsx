@@ -39,27 +39,32 @@ const Ngologin = () => {
         alt="Sample"
       />
 
-     
-
       {/* Larger Fixed Glassmorphism Box */}
       <div
         className="fixed top-10 left-1/2 transform -translate-x-1/2 p-6 sm:p-12 md:p-20 rounded-xl 
         bg-gradient-to-r via-transparent to-transparent bg-opacity-10 backdrop-blur-sm shadow-lg w-11/12 sm:w-3/4 md:w-3/4 h-[400px] sm:h-[600px]"
       >
-         {/* Top-Right Button */}
-         <div className="max-h-screen w-screen relative">
-  <nav className="w-screen h-16 flex items-center px-6 fixed -top-6 left-1/2 transform -translate-x-1/2 z-50 
-    bg-gradient-to-r from-slate-900 via-transparent to-slate-900 bg-opacity-10 backdrop-blur-3xl rounded-3xl">
-    {/* <div className="flex items-center justify-between w-full"> */}
-      {/* Dashboard Button with "Food Saver Network" */}
-      <a 
-  href="/dashboard" 
-  className="text-white text-2xl font-bold rounded-md transition duration-300 whitespace-nowrap"
->
-  Food Saver Network
-</a>
-</nav>
-</div>
+        {/* Top-Right Button */}
+        <div className="max-h-screen w-screen relative">
+          <nav
+            className="w-screen h-16 flex items-center justify-between px-6 fixed -top-6 left-1/2 transform -translate-x-1/2 z-50 
+    bg-gradient-to-r from-slate-900 via-transparent to-slate-900 bg-opacity-10 backdrop-blur-3xl rounded-3xl"
+          >
+            <a
+              href="/dashboard"
+              className="text-white text-2xl font-bold rounded-md transition duration-300 whitespace-nowrap"
+            >
+              Food Saver Network
+            </a>
+          
+            {/* <Link
+              to="/logout"
+              className="px-4 py-2 text-white border-2  border-white rounded-3xl hover:bg-white hover:text-black transition duration-300"
+            >
+              LOGOUT
+            </Link> */}
+          </nav>
+        </div>
         <div className="fixed -left-60 top-1/2 transform -translate-y-1/2 w-100 h-[500px]">
           <DotLottieReact
             src="https://lottie.host/5930968b-64ef-44a8-adaa-83f363964ceb/g0R25OiP5C.lottie"
@@ -89,7 +94,7 @@ const Ngologin = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full p-3 bg-transparent border-b-2 border-white focus:outline-none 
                   text-white font-semibold placeholder-white"
-                placeholder=" username"
+                placeholder=" Username or email"
               />
             </div>
 
@@ -102,12 +107,12 @@ const Ngologin = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full p-3 bg-transparent border-b-2 border-white focus:outline-none   text-white font-semibold placeholder-white"
-                placeholder=" password"
+                placeholder=" Password"
               />
             </div>
             <div className="text-center">
               <Link
-                to="/ForgotPassword"
+                to="/forgotPassword"
                 className="text-sm text-white underline hover:text-violet-300 transition duration-300"
               >
                 Forgot Password?
@@ -118,7 +123,7 @@ const Ngologin = () => {
             <div>
               <button
                 type="submit"
-                className="w-full block text-center p-3 bg-purple-400 text-blue-950 rounded-3xl mt-4"
+                className="w-full block text-center p-3 bg-gray-800 text-white rounded-3xl mt-4"
               >
                 LOGIN
               </button>
@@ -126,7 +131,7 @@ const Ngologin = () => {
 
             <div className="text-center">
               <Link
-                to="/Signup"
+                to="/signup"
                 className="w-full block text-center p-3 bg-white text-blue-950 rounded-3xl mt-4"
               >
                 Don't have an account? Register

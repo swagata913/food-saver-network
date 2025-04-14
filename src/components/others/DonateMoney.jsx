@@ -1,9 +1,14 @@
 import React from 'react';
 import pic from "../../assets/images/pic.jpg"; // Import the image
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const DonateMoney = () => {
+
+  const handlePayment = () => {
+    // Redirect to the PayPal payment URL
+    window.location.href = "https://www.paypal.com/ncp/payment/8J9FQ7XH99D4Y";
+  };
+
   return (
     <div className="relative">
       {/* Top-Right Button */}
@@ -67,46 +72,20 @@ const DonateMoney = () => {
                 id="phone"
                 name="phone"
                 className="w-full p-3 bg-transparent border-b-2 border-white focus:outline-none text-white font-semibold placeholder-white"
-                placeholder="Phone Number"
+                placeholder="Phone Number [optional]"
                 pattern="[0-9]{10}"
-                required
-              />
-            </div>
-
-            {/* Amount Input */}
-            <div>
-              <label htmlFor="amount" className="sr-only">Amount</label>
-              <input
-                type="tel"
-                id="amount"
-                name="amount"
-                className="w-full p-3 bg-transparent border-b-2 border-white focus:outline-none text-white font-semibold placeholder-white"
-                placeholder="The Amount [minimum-100/-]" 
-                pattern="[0-9]{3}"
-                required
-              />
-            </div>
-
-            {/* Date Input */}
-            <div>
-              <label htmlFor="date" className="sr-only">Date</label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                className="w-full p-3 bg-transparent border-b-2 border-white focus:outline-none text-white font-semibold placeholder-white"
-                placeholder="Day Of Donation"
-                required
               />
             </div>
 
             {/* Submit Button */}
             <div>
-              <a
-                href="/"
-                className="submit w-full p-3 bg-violet-500 text-white rounded-3xl hover:bg-violet-600 transition duration-300">
-                  PAY
-              </a>
+              <button
+                type="button"
+                onClick={handlePayment} // Handle click to redirect
+                className="submit w-full p-3 bg-violet-500 text-white rounded-3xl hover:bg-violet-600 transition duration-300"
+              >
+                PAY
+              </button>
             </div>
           </form>
         </div>

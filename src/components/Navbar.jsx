@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi"; // Hamburger icon from react-icons
-
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -10,7 +9,6 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const dropdownRef2 = useRef(null);
-  const dropdownRefDonate = useRef(null);
   const searchRef = useRef(null);
   const hamburgerRef = useRef(null);
 
@@ -32,8 +30,6 @@ const Navbar = () => {
     const handleClickOutside = (event) => {
       if (
         (!dropdownRef2.current || !dropdownRef2.current.contains(event.target)) &&
-        (!dropdownRefDonate.current ||
-          !dropdownRefDonate.current.contains(event.target)) &&
         (!searchRef.current || !searchRef.current.contains(event.target)) &&
         (!hamburgerRef.current || !hamburgerRef.current.contains(event.target))
       ) {
@@ -50,16 +46,17 @@ const Navbar = () => {
 
   return (
     <div className="max-h-screen w-screen relative">
-  <nav className="w-11/12 h-16 flex items-center px-6 fixed top-4 left-1/2 transform -translate-x-1/2 z-50 
-    bg-gradient-to-r from-slate-900 via-transparent to-slate-900 bg-opacity-10 backdrop-blur-3xl rounded-3xl">
-    <div className="flex items-center justify-between w-full">
-      {/* Dashboard Button with "Food Saver Network" */}
-      <a 
-  href="/dashboard" 
-  className="text-white text-2xl font-bold rounded-md transition duration-300 whitespace-nowrap"
->
-  Food Saver Network
-</a>
+      <nav className="w-11/12 h-16 flex items-center px-6 fixed top-4 left-1/2 transform -translate-x-1/2 z-50 
+        bg-gradient-to-r from-slate-900 via-transparent to-slate-900 bg-opacity-10 backdrop-blur-3xl rounded-3xl">
+        <div className="flex items-center justify-between w-full">
+          {/* Dashboard Button with "Food Saver Network" */}
+          <a
+            href="/dashboard"
+            className="text-white text-2xl font-bold rounded-md transition duration-300 whitespace-nowrap"
+          >
+FOOD SAVER NETWORK
+          </a>
+
           {/* Hamburger Menu */}
           <button
             ref={hamburgerRef}
@@ -71,8 +68,12 @@ const Navbar = () => {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex w-full justify-end text-2xl gap-12 items-center">
+          <Link to="/help" className="px-4 py-2 bg-opacity-20 text-white rounded-3xl border border-transparent focus:outline-none hover:border-white focus:ring-2 focus:ring-white"
+            >
+                        HELP
+                    </Link>
             <Link
-              to="/"
+              to="/members"
               className="px-4 py-2 bg-opacity-20 text-white rounded-3xl border border-transparent focus:outline-none hover:border-white focus:ring-2 focus:ring-white"
             >
               MEMBERS
@@ -83,7 +84,7 @@ const Navbar = () => {
               <button
                 onClick={() => toggleDropdown(2)}
                 className="px-4 py-2 bg-opacity-20 text-white rounded-3xl
-                 border border-transparent focus:outline-none hover:border-white focus:ring-2 font-semibold focus:ring-white"
+                  border border-transparent focus:outline-none hover:border-white focus:ring-2 font-semibold focus:ring-white"
               >
                 JOIN US
               </button>
@@ -95,13 +96,13 @@ const Navbar = () => {
                 >
                   <div className="flex flex-col font-medium items-start space-y-2">
                     <Link
-                      to="/Ngologin"
+                      to="/ngologin"
                       className="block px-4 py-2 text-white hover:text-white hover:underline hover:underline-offset-4"
                     >
                       AS NGO
                     </Link>
                     <Link
-                      to="/Supplierlogin"
+                      to="/supplierlogin"
                       className="block px-4 py-2 text-white hover:text-white hover:underline hover:underline-offset-4"
                     >
                       AS FOOD SUPPLIER
@@ -111,46 +112,14 @@ const Navbar = () => {
               )}
             </div>
 
+            {/* Direct Donate Link */}
             <Link
-              to="/aboutus"
-              className="px-4 py-2 bg-opacity-20 text-white rounded-3xl 
-              border border-transparent focus:outline-none hover:border-white focus:ring-2 focus:ring-white"
+              to="/donateMoney"
+              className="px-4 py-2 bg-white text-black rounded-3xl border border-transparent font-semibold
+                focus:outline-none hover:border-black focus:ring-3 focus:ring-black"
             >
-              ABOUT US
+              DONATE
             </Link>
-
-            {/* DONATE Dropdown */}
-            <div className="relative" ref={dropdownRefDonate}>
-              <button
-                onClick={() => toggleDropdown(3)}
-                className="px-4 py-2 bg-white text-black rounded-3xl border border-transparent font-semibold
-               focus:outline-none hover:border-black focus:ring-3 focus:ring-black"
-              >
-                DONATE
-              </button>
-              {openDropdown === 3 && (
-                <div
-                  className="absolute left-1/2 transform -translate-x-1/2 text-sm mt-2 flex flex-col w-max 
-                    bg-gradient-to-r from-slate-900 via-transparent to-slate-900 bg-opacity-10 
-                    backdrop-blur-5xl rounded-3xl border border-white/30 shadow-lg p-4"
-                >
-                  <div className="flex flex-col items-start space-y-2">
-                    <Link
-                      to="/DonateMoney"
-                      className="block px-4 py-2 text-white hover:text-white hover:underline hover:underline-offset-4"
-                    >
-                      Donate Money
-                    </Link>
-                    <Link
-                      to="/DonateFood"
-                      className="block px-4 py-2 text-white hover:text-white hover:underline hover:underline-offset-4"
-                    >
-                      Donate Food
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
         </div>
 
@@ -158,13 +127,7 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-1/2 transform -translate-x-1/2 bg-transparent p-6 rounded-lg shadow-lg w-full flex flex-col items-center gap-4">
             <Link to="/" className="text-white text-lg" onClick={toggleMobileMenu}>
-              MEMBERSHIP
-            </Link>
-            <Link
-              to="/aboutus"
-              className="px-4 py-2 bg-opacity-20 text-white rounded-3xl border border-transparent focus:outline-none hover:border-white focus:ring-2 font-bold focus:ring-white"
-            >
-              ABOUT US
+              MEMBERS
             </Link>
             <div className="relative" ref={dropdownRef2}>
               <button
@@ -181,13 +144,13 @@ const Navbar = () => {
                 >
                   <div className="flex flex-col font-medium items-start space-y-2">
                     <Link
-                      to="/Ngologin"
+                      to="/ngologin"
                       className="block px-4 py-2 text-white hover:text-white hover:underline hover:underline-offset-4"
                     >
                       AS NGO
                     </Link>
                     <Link
-                      to="/Supplierlogin"
+                      to="/supplierlogin"
                       className="block px-4 py-2 text-white hover:text-white hover:underline hover:underline-offset-4"
                     >
                       AS FOOD SUPPLIER
@@ -196,6 +159,16 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+
+            {/* Mobile Donate Link */}
+            <Link
+              to="/donateMoney"
+              className="px-4 py-2 bg-white text-black rounded-3xl border border-transparent font-semibold
+                focus:outline-none hover:border-black focus:ring-3 focus:ring-black"
+              onClick={toggleMobileMenu}
+            >
+              DONATE
+            </Link>
           </div>
         )}
       </nav>

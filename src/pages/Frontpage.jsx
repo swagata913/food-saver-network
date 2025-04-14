@@ -153,7 +153,7 @@ const Frontpage = () => {
             <FaWhatsapp />
           </a>
           <a
-            href="https://www.facebook.com/profile.php?id=100053993253639&mibextid=ZbWKwL" // Replace with your Facebook link
+            href="https://www.facebook.com/profile.php?id=100075969159314&mibextid=ZbWKwL" // Replace with your Facebook link
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 text-3xl hover:text-blue-700 transition"
@@ -161,7 +161,7 @@ const Frontpage = () => {
             <FaFacebook />
           </a>
           <a
-            href="https://www.instagram.com/20_saandy/profilecard/?igsh=bDB5Mjd3c3JvZWYy" // Replace with your Instagram link
+            href="https://www.instagram.com/food_saver_network/profilecard/?igsh=cTRpbDh5Z2JubWRh" // Replace with your Instagram link
             target="_blank"
             rel="noopener noreferrer"
             className="text-pink-500 text-3xl hover:text-pink-600 transition"

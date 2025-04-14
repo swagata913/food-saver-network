@@ -28,9 +28,9 @@ import App from './App.jsx'; // Import App
 
 // Wrap App in BrowserRouter
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>
+
 );

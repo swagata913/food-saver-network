@@ -12,7 +12,7 @@ const Suppliersignup = () => {
   const [contactInfo, setContactinfo] = useState('');
   const [email, setEmail] = useState('');
   const [licenseImage, setLicenseImage] = useState(null);
-  const [Type, setType] = useState('');
+  const [type, setType] = useState('');
   const [avatar, setAvatar] = useState(null);
 
   const [error, setError] = useState('');
@@ -31,11 +31,12 @@ const Suppliersignup = () => {
       formData.append('contactInfo', contactInfo);
       formData.append('email', email);
       formData.append('licenseImage', licenseImage);
-      formData.append('Type', Type);
+      formData.append('type', type);
       formData.append('avatar', avatar);
 
       const response = await axios.post(
         'http://localhost:8000/api/v1/foodDonors/register',
+
         formData,
         {
           headers: { 'Content-Type': 'multipart/form-data' },
@@ -43,8 +44,7 @@ const Suppliersignup = () => {
       );
 
       if (response.data.success) {
-        alert('Signup successful! Redirecting to login page...');
-        navigate('/Supplierlogin');
+            navigate('/Supplierlogin');
       } else {
         setError('Failed to sign up. Please check your details and try again.');
       }
@@ -162,7 +162,7 @@ const Suppliersignup = () => {
             <div>
               <select
                 className="w-full p-3 bg-transparent text-white border-b-2 border-white focus:outline-none focus:border-b-4 focus:border-white transition-all duration-300"
-                value={Type}
+                value={type}
                 onChange={(e) => setType(e.target.value)}
                 required
                 style={{
@@ -173,11 +173,14 @@ const Suppliersignup = () => {
                 <option style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", color: "white" }} value="">
                   Select Type
                 </option>
-                <option style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", color: "white" }} value="food_donor">
+                <option style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", color: "white" }} value="caterer">
                   Caterer
                 </option>
-                <option style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", color: "white" }} value="supplier">
+                <option style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", color: "white" }} value="restaurant">
                   Restaurant
+                </option>
+                <option style={{ backgroundColor: "rgba(0, 0, 0, 0.9)", color: "white" }} value="others">
+                  others
                 </option>
               </select>
             </div>
@@ -197,7 +200,7 @@ const Suppliersignup = () => {
             <div>
               <button
                 type="submit"
-                className={`w-full p-3 bg-violet-500 text-white rounded-3xl hover:bg-violet-600 transition duration-300 ${isLoading ? 'cursor-not-allowed bg-gray-400' : ''}`}
+                className={`w-full p-3 bg-slate-800 text-white rounded-3xl  transition duration-300 ${isLoading ? 'cursor-not-allowed bg-gray-400' : ''}`}
                 disabled={isLoading}
               >
                 {isLoading ? 'Signing Up...' : 'REGISTER'}
